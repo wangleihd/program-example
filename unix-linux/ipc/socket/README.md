@@ -23,7 +23,9 @@ Message from client (1024)) :message from client
 [root@localhost]#
 
 
-当运行s_unix程序后，该程序将处于监听状态。这时，可以通过netstat命令查看程序运行情况，s_unix的套接字类型为流套接字，并处于监听状态。
+当运行s_unix程序后，该程序将处于监听状态。这时，可以通过netstat命令查看程序运行情况，
+s_unix的套接字类型为流套接字，并处于监听状态。
+	
 [root@localhost]# 
 [root@localhost]# ./s_unix &
 [1] 12056
