@@ -23,6 +23,7 @@ int main(int argc,char **argv)
 	signal(SIGTTIN,SIG_IGN);
 	signal(SIGTSTP,SIG_IGN);
 	signal(SIGHUP ,SIG_IGN);
+	signal(SIGCHLD,SIG_IGN);
 	/* 父进程退出,程序进入后台运行 */
 	if(fork()!=0) 
 		exit(1);
@@ -36,8 +37,7 @@ int main(int argc,char **argv)
 	/* 关闭打开的文件描述符,包括标准输入、标准输出和标准错误输出 */
 	for (fd = 0, fdtablesize = getdtablesize(); fd < fdtablesize; fd++)
 		close(fd);
-	umask(0);/*重设文件创建掩模 */
-	signal(SIGCHLD,SIG_IGN);/* 忽略SIGCHLD信号 */
+	umask(0);/*重设文件创建掩模 */	
 	/*打开log系统*/
 	syslog(LOG_USER|LOG_INFO,"守护进程测试!\n");
 	while(1){
