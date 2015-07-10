@@ -69,10 +69,15 @@ int main(void)
     for(i=0;i<4;i++)
     {
         memset(recv_buf,0,1024);
+    pdebug;
         num=read(com_fd,recv_buf,sizeof(recv_buf));
         printf("Message from client (%d)) :%s\n",num,recv_buf);
+        if(com_fd){
+    pdebug;
+        }
 
-        write(com_fd,snd_buf, sizeof(snd_buf));
+        num = sendto(com_fd,snd_buf, sizeof(snd_buf), 0, NULL, 0);
+        printf("%d\n", num);
     }
     close(com_fd);
     close(listen_fd);

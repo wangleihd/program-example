@@ -34,7 +34,7 @@ int main(void)
 //send info server
     for(i=0;i<4;i++){
         write(connect_fd,snd_buf,sizeof(snd_buf));
-        num=read(connect_fd,recv_buf,sizeof(recv_buf));
+        num=recvfrom(connect_fd,recv_buf,sizeof(recv_buf), 0, NULL, 0);
         printf("Message from server (%d)) :%s\n",num,recv_buf);
       }
     close(connect_fd);
