@@ -19,7 +19,7 @@ int main( int argc, char **argv )
 		exit(1);
 	}
 
-	wd = inotify_add_watch( fd, argv[1], IN_MODIFY | IN_CREATE | IN_DELETE );
+	wd = inotify_add_watch( fd, argv[1], IN_MODIFY | IN_CREATE | IN_DELETE | IN_ATTRIB);
 
 	while ((length = read( fd, buffer, sizeof(buffer))) > 0 ) {
 		i = 0;
@@ -43,6 +43,8 @@ int main( int argc, char **argv )
 						printf( "The file %s was deleted.\n", event->name );
 					}
 				}
+			} else {
+				printf("length = 0 \n");	
 			}
 			i += EVENT_SIZE + event->len;
 		}

@@ -18,7 +18,7 @@ int main(void)
     int epfd = epoll_create(1);                   
 
     ev.data.fd = pfd1;
-    ev.events = EPOLLIN|EPOLLET;
+    ev.events = EPOLLIN;
     epoll_ctl(epfd, EPOLL_CTL_ADD, pfd1, &ev);    
 
     ev.data.fd = pfd2;
@@ -33,6 +33,9 @@ int main(void)
         buf[len]='\0';
         printf("fd:%d ~ %s\n", fd, buf);       
     }  //继续while循环以监听p1,p2
+	close(pfd1);
+	close(pfd2);
+	close(epfd);
 
     return 0;
 }
