@@ -1,0 +1,48 @@
+<html>
+  <head><meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <script language='JavaScript'>
+      function isNumber(n)
+      {
+        if (!n) return false;
+        var re=/^\d{1,3}$/;
+        if (!re.test(n)) return false;
+        return true;
+      }
+      function check(form)
+      {
+        if (form.Name.value==''){
+          alert('Name不能为空！');
+          return false;
+        }
+        if (form.Name.value.length>10){
+          alert('Name太长！');
+          return false;
+        }
+        if (!isNumber(form.ScoreA.value)) {
+          alert('ScoreA必须是1-3位正整数！');
+          return false;
+        }
+        if (!isNumber(form.ScoreB.value)) {
+          alert('ScoreB必须是1-3位正整数！');
+          return false;
+        }
+        if (!isNumber(form.ScoreC.value)) {
+          alert('ScoreC必须是1-3位正整数！');
+          return false;
+        }
+        return true;
+      }
+    </script>
+  </head>
+  <body>
+    <form action="insert.cgi" onSubmit='return check(this);' method="POST">
+      Name: <input type="text" name="Name"><br>
+      Gender: <input type="radio" name="Gender" value="Male" checked>Male
+              <input type="radio" name="Gender" value="Female">Female<br>
+      ScoreA: <input type="text" name="ScoreA"><br>
+      ScoreB: <input type="text" name="ScoreB"><br>
+      ScoreC: <input type="text" name="ScoreC"><br>
+      <input type="submit" value="Insert">
+    </form>
+  </body>
+</html>

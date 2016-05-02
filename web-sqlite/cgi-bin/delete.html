@@ -1,0 +1,23 @@
+<html>
+  <head><meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <script language='JavaScript'>
+      function check(form)
+      {
+        if (form.Name.value==''){
+          alert('Name不能为空！');
+          return false;
+        }
+        if (form.Name.value.length>10){
+          alert('Name太长！');
+          return false;
+        }
+        return true;
+      }
+  </script></head>
+  <body>
+    <form action='delete.cgi' onSubmit='return check(this);' method='POST'>
+      Name: <input type='text' name='Name'><br>
+      <input type="submit" value="Delete">
+    </form>
+  </body>
+</html>
